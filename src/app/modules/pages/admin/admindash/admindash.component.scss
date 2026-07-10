@@ -1,0 +1,24 @@
+.admin-dashboard-container {
+    background-color: #f8f9fa; /* Light, clean background */
+}
+
+/* Smooth transition effects for buttons */
+.transition-all {
+    transition: all 0.2s ease-in-out;
+}
+
+/* Custom card radius tweaks */
+.rounded-4 {
+    border-radius: 0.75rem !important;
+}
+
+/* Tracking utility for clean typography */
+.tracking-tight {
+    letter-spacing: -0.025em;
+}
+
+/* Subtle hover pop effect on the logout button */
+.btn-outline-danger:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(220, 53, 69, 0.15);
+}

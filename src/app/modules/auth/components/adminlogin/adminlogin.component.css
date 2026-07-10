@@ -1,0 +1,12 @@
+
+.alignment-wrapper {
+    min-height: calc(100vh - 57px) !important;
+}
+
+
+.object-fit-cover {
+    object-fit: cover;
+}
+.gg{
+    background-color: rgb(228, 241, 241);
+}

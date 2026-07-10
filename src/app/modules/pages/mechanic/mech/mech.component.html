@@ -1,0 +1,148 @@
+<!-- View 1: Main Customer Requests Table List -->
+<div *ngIf="!showForm" class="min-vh-100 bg-light">
+    <!-- Clean Header Navbar Structure -->
+    <header class="d-flex justify-content-between align-items-center px-4 py-3 bg-white border-bottom shadow-sm">
+        <div class="d-flex align-items-center gap-2">
+            <div class="bg-primary bg-opacity-10 text-primary p-2 rounded-3">
+                <i class="fas fa-clipboard-list fs-4"></i>
+            </div>
+            <h2 class="fw-bold text-dark m-0 fs-3 tracking-tight">Request From Customer</h2>
+        </div>
+        
+        <button type="button" class="btn btn-outline-danger d-flex align-items-center gap-2 px-3 py-2 rounded-3 fw-semibold transition-all" (click)="logout()">
+            <i class="fas fa-sign-out-alt"></i>
+            <span>Logout</span>
+        </button>
+    </header>
+
+    <!-- Main Content Container Grid -->
+    <main class="p-4 container-fluid">
+        <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
+            <div class="card-body p-0">
+                <custom-table 
+                    [columns]="columnsArray" 
+                    [data]="dataArray" 
+                    [actions]="actions" 
+                    [loading]="loading"
+                    [showfilter]="false" 
+                    (requestData)="fetchTableData($event)">
+                </custom-table>
+            </div>
+        </div>
+    </main>
+</div>
+
+<!-- View 2: Detailed Incoming Request Form Inspector (Split Side-by-Side View) -->
+<div *ngIf="showForm" class="min-vh-100 bg-light d-flex flex-column">
+    
+    <!-- Top Context Header Breadcrumb Style -->
+    <header class="bg-white border-bottom px-4 py-3 shadow-sm d-flex justify-content-between align-items-center">
+        <div class="d-flex align-items-center gap-3">
+            <button class="btn btn-light btn-sm rounded-3 border" type="button" (click)="closeRequestView()">
+                <i class="fas fa-arrow-left me-1"></i> Back
+            </button>
+            <div>
+                <span class="badge bg-warning text-dark mb-0 px-2 py-1 rounded-pill fw-bold text-uppercase tracking-wider fs-8">Incoming Request</span>
+                <h4 class="fw-bold text-dark m-0 fs-5">Requested by: {{ selectedRequest?.cname || 'Unknown Client' }}</h4>
+            </div>
+        </div>
+        
+        <!-- Quick Action Group Top Right -->
+        <div class="d-flex gap-2">
+            <button class="btn btn-outline-danger px-3 py-2 rounded-3 fw-bold transition-all" type="button" (click)="updateStatus('Rejected')">
+                Reject
+            </button>
+            <button class="btn btn-success px-4 py-2 rounded-3 fw-bold shadow-sm transition-all" type="button" (click)="updateStatus('Approved')">
+                Accept & Confirm
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Dynamic Layout Split Content Grid -->
+    <main class="container-fluid p-4 flex-grow-1">
+        <div class="row g-4 match-height">
+            
+            <!-- LEFT COLUMN: Technical & Customer Details Profile -->
+            <div class="col-12 col-lg-7">
+                <div class="card border-0 shadow-sm rounded-4 bg-white p-4 h-100 d-flex flex-column justify-content-between">
+                    <div>
+                        <h3 class="fw-bold text-dark mb-4 border-bottom pb-2">
+                            <i class="fas fa-file-invoice text-primary me-2"></i>Customer Details
+                        </h3>
+
+                        <!-- Metrics Row Panel Split Grid -->
+                        <div class="row g-3 mb-4">
+                            <div class="col-6">
+                                <div class="bg-light rounded-4 p-3 border border-light-subtle">
+                                    <p class="mb-2 small text-muted font-monospace text-uppercase fw-semibold tracking-wider">Distance Away</p>
+                                    <h3 class="fw-bold mb-0 text-dark d-flex align-items-center gap-2">
+                                        <i class="fas fa-map-marker-alt text-secondary fs-4"></i>
+                                        <span>{{ selectedRequest?.distance || '0' }} KM</span>
+                                    </h3>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="bg-success bg-opacity-10 rounded-4 p-3 border border-success-subtle">
+                                    <p class="mb-2 small text-success font-monospace text-uppercase fw-semibold tracking-wider">Estimated Payout</p>
+                                    <h3 class="fw-bold mb-0 text-success d-flex align-items-center gap-2">
+                                        <i class="fas fa-rupee-sign text-success fs-4"></i>
+                                        <span>{{ selectedRequest?.amount || '0' }}</span>
+                                    </h3>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Technical Core Specification Data Grid -->
+                        <div class="bg-light rounded-4 p-4 border border-light-subtle">
+                            <div class="row g-4">
+                                <div class="col-6">
+                                    <small class="text-muted fw-semibold d-block text-uppercase font-monospace fs-7 mb-2">Vehicle Model</small>
+                                    <div class="d-flex align-items-center gap-2 text-dark fw-bold fs-5">
+                                        <i class="fas fa-car text-secondary"></i>
+                                        <span>{{ selectedRequest?.vehName || 'N/A' }}</span>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <small class="text-muted fw-semibold d-block text-uppercase font-monospace fs-7 mb-2">Category</small>
+                                    <div class="d-flex align-items-center gap-2 text-dark fw-bold fs-5">
+                                        <i class="fas fa-motorcycle text-secondary"></i>
+                                        <span>{{ selectedRequest?.vehCategory || 'N/A' }}</span>
+                                    </div>
+                                </div>
+                                <div class="col-12 border-top border-2 border-white pt-3">
+                                    <small class="text-muted fw-semibold d-block text-uppercase font-monospace fs-7 mb-2">Reported Problem</small>
+                                    <div class="alert alert-danger bg-danger bg-opacity-10 border-0 rounded-3 p-3 mb-0 fw-bold text-danger d-flex align-items-center gap-2">
+                                        <i class="fas fa-tools"></i>
+                                        <span>{{ selectedRequest?.problemType || 'N/A' }}</span>
+                                    </div>
+                                </div>
+                                <div class="col-12 border-top border-2 border-white pt-3">
+                                    <small class="text-muted fw-semibold d-block text-uppercase font-monospace fs-7 mb-2">Contact Info</small>
+                                    <div class="d-flex align-items-center gap-2 text-dark fw-semibold fs-5">
+                                        <i class="fas fa-phone text-secondary"></i>
+                                        <span>{{ selectedRequest?.mob || 'N/A' }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RIGHT COLUMN: Standalone Attached Layout Image View -->
+            <div class="col-12 col-lg-5">
+                <div class="card border-0 shadow-sm rounded-4 bg-white p-4 h-100 d-flex flex-column">
+                    <h3 class="fw-bold text-dark mb-4 border-bottom pb-2">
+                        <i class="fas fa-image text-primary me-2"></i>Vehicle Attachment
+                    </h3>
+                    <div class="flex-grow-1 d-flex align-items-center justify-content-center bg-light rounded-4 p-2 border overflow-hidden">
+                        <img [src]="selectedRequest?.imageUrl || 'assets/workOrder/req-no image.png'" alt="request image"
+                            class="w-100 rounded-3 object-fit-cover shadow-sm transition-all img-fluid"
+                            style="max-height: 400px; min-height: 250px; display: block;">
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+</div>

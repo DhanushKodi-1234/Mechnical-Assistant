@@ -1,0 +1,82 @@
+<div class="">
+    <div class="d-flex justify-content-center p-4">
+        <h2 class="fw-bold"></h2>
+    </div>
+
+    <div class="container d-flex align-items-center justify-content-center min-vh-100 py-5">
+    
+    <div class="card border-0 shadow-lg p-4 p-md-5 rounded-4 gg" style="max-width: 600px; width: 100%;">
+        
+        <div class="text-center mb-4">
+            <h1 class="fw-bold text-dark fs-2 mb-1">Request Form</h1>
+            <p class="text-muted">Please fill in your details to create an account.</p>
+        </div>
+
+        <form [formGroup]="RegisterForm" (ngSubmit)="onSubmit()">
+            
+     <div class="mb-4">
+    <label for="vehName" class="form-label fw-semibold text-secondary small">Vehicle Name / Model</label>
+    <div class="input-group">
+        <span class="input-group-text bg-light border-end-0 text-muted px-3">
+            <i class="fas fa-car"></i>
+        </span>
+        <input type="text" id="vehName" class="form-control bg-light bg-opacity-50 border-start-0 py-2.5 fs-5" 
+               placeholder="e.g., Honda Activa, Yamaha R15" formControlName="vehName">
+    </div>
+</div>
+
+<div class="mb-4">
+    <label for="vehCategory" class="form-label fw-semibold text-secondary small">Vehicle Category</label>
+    <div class="input-group">
+        <span class="input-group-text bg-light border-end-0 text-muted px-3">
+            <i class="fas fa-motorcycle"></i>
+        </span>
+        <select id="vehCategory" class="form-select bg-light bg-opacity-50 border-start-0 py-2.5 fs-5 text-muted" formControlName="vehCategory">
+            <option value="" disabled selected>Select Category</option>
+            <option value="Two-Wheeler">Two-Wheeler (Bike/Scooter)</option>
+            <option value="Three-Wheeler">Three-Wheeler (Auto)</option>
+            <option value="Four-Wheeler">Four-Wheeler (Car)</option>
+        </select>
+    </div>
+</div>
+
+<div class="mb-4">
+    <label for="problemType" class="form-label fw-semibold text-secondary small">Problem Type</label>
+    <div class="input-group">
+        <span class="input-group-text bg-light border-end-0 text-muted px-3">
+            <i class="fas fa-tools"></i>
+        </span>
+        <select id="problemType" class="form-select bg-light bg-opacity-50 border-start-0 py-2.5 fs-5 text-muted" formControlName="problemType">
+            <option value="" disabled selected>Select Problem Type</option>
+            <option value="Engine Issue">Engine Issue</option>
+            <option value="Brake Repair">Brake Repair</option>
+            <option value="Electrical / Battery">Electrical / Battery</option>
+            <option value="General Service">General Service / Oil Change</option>
+            <option value="Puncture / Tyre">Puncture / Tyre</option>
+            <option value="Other">Other (Specify in address/notes)</option>
+        </select>
+    </div>
+</div>
+
+<div class="mb-4">
+    <label for="vehImage" class="form-label fw-semibold text-secondary small">Upload Vehicle / Problem Image</label>
+    <div class="input-group">
+        <span class="input-group-text bg-light border-end-0 text-muted px-3">
+            <i class="fas fa-camera"></i>
+        </span>
+        <input type="file" id="vehImage" class="form-control bg-light bg-opacity-50 border-start-0 py-2.5 fs-5" 
+               (change)="onFileSelect($event)">
+    </div>
+</div>
+
+            <button class="btn btn-primary w-100 py-3 rounded-3 fw-bold shadow-sm mb-4 fs-5 mt-2" type="submit">
+                Submit
+            </button>
+
+            <hr class="text-muted opacity-25 my-4" />
+
+           
+        </form>
+    </div>
+</div>
+</div>

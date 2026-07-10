@@ -1,0 +1,39 @@
+<!-- <div class="container-fluid p-3">
+
+    <h3>Nearby Mechanics</h3>
+
+    <div id="map"></div>
+
+</div> -->
+
+<!-- <div class="container-fluid p-0"> 
+    <div class="card border-0 rounded-0"> 
+        <div class="card-header bg-white border-bottom p-3">
+            <h4 class="fw-bold m-0 text-dark">
+                <i class="fas fa-map-marked-alt text-primary me-2"></i>Nearby Mechanics
+            </h4>
+        </div>
+        <div class="card-body p-0">
+            <div id="map" style="height: calc(100vh - 70px); min-height: 500px; width: 100%;"></div>
+        </div>
+    </div>
+</div> -->
+
+<div class="container-fluid p-0"> 
+    <div class="card border-0 rounded-0"> 
+        <div class="card-header bg-white border-bottom p-3 d-flex justify-content-between align-items-center">
+            <h4 class="fw-bold m-0 text-dark">
+                <i class="fas fa-map-marked-alt text-primary me-2"></i>Nearby Mechanics
+            </h4>
+            
+            <div class="d-flex">
+                <input type="text" #destInput class="form-control me-2" placeholder="Enter destination (e.g. Gandhipuram)">
+                <button class="btn btn-primary px-4" (click)="findRoute(destInput.value)">Go</button>
+            </div>
+
+        </div>
+        <div class="card-body p-0">
+            <div id="map" style="height: calc(100vh - 70px); min-height: 500px; width: 100%;"></div>
+        </div>
+    </div>
+</div>

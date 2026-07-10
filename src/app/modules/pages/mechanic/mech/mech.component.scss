@@ -1,0 +1,30 @@
+/* Container Spacing & System Palette Global Utilities */
+.tracking-tight { letter-spacing: -0.025em; }
+.tracking-wider { letter-spacing: 0.05em; }
+.fs-7 { font-size: 0.75rem; }
+.shadow-xl { box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); }
+.shadow-xs { box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); }
+
+/* Flexible Grow Properties overrides for targeted form controls button structure */
+.flex-grow-2 {
+    flex-grow: 2 !important;
+}
+
+/* Animations and Transitions Global Classes */
+.transition-all {
+    transition: all 0.2s ease-in-out;
+}
+
+.btn-outline-danger:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(220, 53, 69, 0.15);
+}
+
+.btn-success:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(25, 135, 84, 0.2);
+}
+
+.image-hover-scale:hover {
+    transform: scale(1.02);
+}

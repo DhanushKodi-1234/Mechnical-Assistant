@@ -1,0 +1,159 @@
+<div class="d-flex flex-row gap-3 p-3 justify-content-end bg-light border-bottom">
+    <a routerLink="/auth/admin" class="text-decoration-none fw-semibold text-secondary"> Admin </a>
+    <a routerLink="/auth/mclogin" class="text-decoration-none fw-semibold text-secondary"> Mechanic </a>
+    <a routerLink="/auth/login" class="text-decoration-none fw-semibold text-secondary"> Customer </a>
+</div>
+
+<div class="container-fluid p-0 overflow-hidden">
+  <div class="row g-0 alignment-wrapper">
+    
+    <!-- Left Side: Image Panel with Written Content -->
+    <div class="col-12 col-lg-8 d-none d-lg-block position-relative">
+      <img src="assets/loginimagealll/loginback.jpg" alt="Mechanic Registration Panel" 
+           class="w-100 h-100 object-fit-cover position-absolute top-0 start-0">
+      
+      <!-- Black overlay mask to make the text stand out clearly over the photo -->
+      <div class="position-absolute top-0 start-0 w-100 h-100" 
+           style="background: linear-gradient(135deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 100%); z-index: 1;"></div>
+
+      <!-- Text Container written over the image -->
+      <div class="position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-center p-5 text-white" style="z-index: 2;">
+        <div style="max-width: 600px;" class="ms-md-4">
+          <span class="badge bg-primary px-3 py-2 rounded-pill mb-3 text-uppercase fw-bold tracking-wide fs-6">Partner Portal</span>
+          <h1 class="display-3 fw-bold mb-3 lh-sm text-white">Grow Your Repair Business With Us</h1>
+          <p class="fs-4 text-white-50 mb-4">Register your service station to connect with local vehicle owners, manage job cards efficiently, track parts inventories, and scale your daily workshop revenues.</p>
+          
+          <!-- Small feature items with icons -->
+          <div class="d-flex flex-column gap-3 border-top border-white border-opacity-25 pt-4">
+            <div class="d-flex align-items-center gap-3">
+              <div class="bg-primary bg-opacity-25 rounded-circle p-2 d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                <i class="fas fa-tools text-primary"></i>
+              </div>
+              <span class="fs-5 fw-medium">Streamlined digital workflow tools for booking requests</span>
+            </div>
+            <div class="d-flex align-items-center gap-3">
+              <div class="bg-primary bg-opacity-25 rounded-circle p-2 d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                <i class="fas fa-wallet text-primary"></i>
+              </div>
+              <span class="fs-5 fw-medium">Direct secure payouts & detailed operational summaries</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Side: Mechanic Signup Form Box -->
+    <div class="col-12 col-lg-4 d-flex align-items-center justify-content-center gg p-4 p-md-5">
+      <div class="w-100" style="max-width: 480px;">
+        
+        <div class="text-center mb-4">
+          <h1 class="fw-bold text-dark fs-2 mb-1">Mechanic Signup Page</h1>
+          <p class="text-muted">Please fill in your details to create an account.</p>
+        </div>
+
+        <form [formGroup]="RegisterForm" (ngSubmit)="onSubmit()">
+
+            <!-- Shop Name Input -->
+            <div class="mb-4">
+                <label for="username" class="form-label fw-semibold text-secondary small">Enter the name</label>
+                <div class="input-group">
+                    <span class="input-group-text bg-light border-end-0 text-muted px-3">
+                        <i class="fas fa-store"></i>
+                    </span>
+                    <input type="text" name="username" id="username"
+                        class="form-control bg-light bg-opacity-50 border-start-0 py-2.5 fs-5"
+                        placeholder="Enter your full name" formControlName="shopname">
+                </div>
+            </div>
+
+            <!-- Contact Person Name Input -->
+            <div class="mb-4">
+                <label for="cname" class="form-label fw-semibold text-secondary small">Contact Person Name</label>
+                <div class="input-group">
+                    <span class="input-group-text bg-light border-end-0 text-muted px-3">
+                        <i class="fas fa-user"></i>
+                    </span>
+                    <input type="text" name="cname" id="cname"
+                        class="form-control bg-light bg-opacity-50 border-start-0 py-2.5 fs-5"
+                        placeholder="Enter your full name" formControlName="cname">
+                </div>
+            </div>
+
+            <!-- Email Input -->
+            <div class="mb-4">
+                <label for="email" class="form-label fw-semibold text-secondary small">Enter the Email</label>
+                <div class="input-group">
+                    <span class="input-group-text bg-light border-end-0 text-muted px-3">
+                        <i class="fas fa-envelope"></i>
+                    </span>
+                    <input type="email" name="email" id="email"
+                        class="form-control bg-light bg-opacity-50 border-start-0 py-2.5 fs-5"
+                        placeholder="Enter your email" formControlName="email">
+                </div>
+            </div>
+
+            <!-- Mobile Input -->
+            <div class="mb-4">
+                <label for="number" class="form-label fw-semibold text-secondary small">Enter the Mobile</label>
+                <div class="input-group">
+                    <span class="input-group-text bg-light border-end-0 text-muted px-3">
+                        <i class="fas fa-phone"></i>
+                    </span>
+                    <input type="number" name="number" id="number"
+                        class="form-control bg-light bg-opacity-50 border-start-0 py-2.5 fs-5"
+                        placeholder="Enter your mobile number" formControlName="mob">
+                </div>
+            </div>
+
+            <!-- Shop Address Input -->
+            <div class="mb-4">
+                <label for="shopadd" class="form-label fw-semibold text-secondary small">Enter the Shop Address</label>
+                <div class="input-group">
+                    <span class="input-group-text bg-light border-end-0 text-muted px-3">
+                        <i class="fas fa-map-marked-alt"></i>
+                    </span>
+                    <input type="text" name="shopadd" id="shopadd"
+                        class="form-control bg-light bg-opacity-50 border-start-0 py-2.5 fs-5"
+                        placeholder="Enter your full address" formControlName="shopadd">
+                </div>
+            </div>
+
+            <!-- Password Input -->
+            <div class="mb-4">
+                <label for="password" class="form-label fw-semibold text-secondary small">Enter the Password</label>
+                <div class="input-group">
+                    <span class="input-group-text bg-light border-end-0 text-muted px-3">
+                        <i class="fas fa-key"></i>
+                    </span>
+                    <input type="password" name="password" id="password"
+                        class="form-control bg-light bg-opacity-50 border-start-0 py-2.5 fs-5"
+                        placeholder="Enter your password" formControlName="password">
+                </div>
+            </div>
+            <div class="mb-3">
+    <label>Per KM Charge</label>
+    <input
+        type="number"
+        formControlName="perKmCharge"
+        class="form-control">
+</div>
+
+            <!-- Submit Button -->
+            <button class="btn btn-primary w-100 py-3 rounded-3 fw-bold shadow-sm mb-4 fs-5 mt-2" type="submit">
+                Submit
+            </button>
+
+            <hr class="text-muted opacity-25 my-4" />
+
+            <!-- Login Redirect Link -->
+            <div class="text-center">
+                <span class="text-muted fs-5">Already have an account? </span>
+                <a class="fs-5 fw-bold text-decoration-none" routerLink="/auth/mclogin">Log In</a>
+            </div>
+        </form>
+        
+      </div>
+    </div>
+
+  </div>
+</div>
