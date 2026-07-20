@@ -110,16 +110,27 @@ view(row: any) {
       console.log("Mechanic Latitude:", mechanicLat);
       console.log("Mechanic Longitude:", mechanicLng);
 
-      this.calculatedDistance = this.getDistance(
+      this.calculatedDistance = Math.round(  this.getDistance(
         customerLat,
         customerLng,
         mechanicLat,
         mechanicLng
-      );
+      ));
+
+     if (this.calculatedDistance > 10) {
+
+  const proceed = confirm(
+    `This mechanic is ${this.calculatedDistance} KM away.\n\nDo you want to continue?`
+  );
+
+  if (!proceed) {
+    return;
+  }
+}
 
       console.log("Distance:", this.calculatedDistance);
 
-      const baseCharge = 50;
+      const baseCharge = 5;
       const perKmCharge = Number(row.perKmCharge);
 
       this.calculatedAmount = baseCharge + (this.calculatedDistance * perKmCharge);
@@ -221,4 +232,42 @@ toRad(value: number): number {
       fileInput.value = '';
     }
   }
+paynow() {
+  this.http.post<any>(
+    'http://localhost:3000/api/payment/payment',
+    {
+      amount: this.calculatedAmount
+    }
+  ).subscribe({
+    next: (od) => {
+
+      const options = {
+        key: 'rzp_test_TFmWENas0N8olQ', 
+        amount: od.amount,
+        currency: od.currency,
+        order_id: od.id,
+
+        name: 'Mechanic Assistant',
+        description: 'Vehicle Breakdown',
+
+        handler: (response: any) => {
+          console.log(response);
+          alert('Payment Successful');
+        },
+
+        theme: {
+          color: '#cbe3ee'
+        }
+      };
+
+      const razorpay = new (window as any).Razorpay(options);
+      razorpay.open();
+    },
+
+    error: (err) => {
+      console.error(err);
+      alert('Unable to create payment order.');
+    }
+  });
+}
 }

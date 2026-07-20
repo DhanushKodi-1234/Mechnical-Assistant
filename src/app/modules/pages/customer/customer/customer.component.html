@@ -151,7 +151,7 @@
                             </h3>
                             <!-- <a href="/app/customer/cusloc" -->
                             <a href="/app/customer/map" class="btn btn-primary">
-                                click for map
+                                Click for map
                             </a>
 
                         </div>
@@ -168,24 +168,56 @@
                                     </h2>
                                 </div>
                             </div>
-                            <div class="col-12">
-                                <div
-                                    class="bg-success bg-opacity-10 rounded-4 p-4 border border-success-subtle shadow-xs">
-                                    <div class="d-flex justify-content-between align-items-center ">
-                                        <p
-                                            class="mb-0 small text-success font-monospace text-uppercase fw-semibold tracking-wider ">
-                                            Estimated Cost Summary
-                                        </p>
-                                        <button class="btn btn-success px-4 shadow-sm">
-                                            Initiate Payment
-                                        </button>
+                            <div class="bg-white rounded-4 p-4 border shadow-sm">
+                                <h5 class="fw-bold text-dark mb-4">
+                                    <i class="fas fa-wallet text-primary me-2"></i> Payment Method
+                                </h5>
+
+                                <div class="row g-3 mb-4">
+                                    <!-- Cash Checkbox Box -->
+                                    <div class="col-12 col-md-6">
+                                        <input type="radio" class="btn-check" name="paymentMethod" id="cashOption"
+                                            value="cash" formControlName="paymentMethod">
+                                        <label class="btn btn-outline-success w-100 h-100 p-3 text-start payment-box"
+                                            for="cashOption">
+                                            <div class="d-flex align-items-center justify-content-between mb-2">
+                                                <span class="fw-bold fs-6"><i class="fas fa-money-bill-wave me-2"></i>
+                                                    Cash</span>
+                                                <i class="fas fa-check-circle check-icon fs-5"></i>
+                                            </div>
+                                            <small class="d-block" style="font-size: 0.8rem;">Pay after service is
+                                                completed.</small>
+                                        </label>
                                     </div>
 
-                                    <h2 class="fw-bold mb-0 text-success d-flex align-items-center gap-2">
-                                        <i class="fas fa-rupee-sign text-success"></i>
-                                        <span>{{ calculatedAmount || '0' }}</span>
-                                    </h2>
+                                    <!-- Online Checkbox Box -->
+                                    <div class="col-12 col-md-6">
+                                        <input type="radio" class="btn-check" name="paymentMethod" id="onlineOption"
+                                            value="online" formControlName="paymentMethod" (click)="paynow()">
+                                        <label class="btn btn-outline-primary w-100 h-100 p-3 text-start payment-box"
+                                            for="onlineOption">
+                                            <div class="d-flex align-items-center justify-content-between mb-2">
+                                                <span class="fw-bold fs-6"><i class="fas fa-credit-card me-2"></i>
+                                                    Online</span>
+                                                <i class="fas fa-check-circle check-icon fs-5"></i>
+                                            </div>
+                                            <small class="d-block" style="font-size: 0.8rem;">Secure via
+                                                Razorpay.</small>
+                                        </label>
+                                    </div>
                                 </div>
+
+                                <hr class="border-secondary-subtle">
+
+                                <div class="d-flex justify-content-between align-items-center mb-4">
+                                    <span class="fw-semibold text-secondary">Estimated Amount</span>
+                                    <h3 class="text-success fw-bold mb-0">₹ {{ calculatedAmount }}</h3>
+                                </div>
+
+                                <!-- Single Submit Button (Relies on your continuePayment() method from earlier) -->
+                                <button type="submit" class="btn btn-dark w-100 py-3 rounded-3 fw-bold shadow-sm">
+                                    Confirm Booking <i class="fas fa-arrow-right ms-2"></i>
+                                </button>
                             </div>
                         </div>
                     </div>

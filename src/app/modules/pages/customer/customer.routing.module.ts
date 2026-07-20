@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { CustomerComponent } from './customer/customer.component';
 import { CustomerlocComponent } from './customerloc/customerloc.component';
 import { MapComponent } from './map/map.component';
+import { PaymentComponent } from './payment/payment.component';
 const routes: Routes = [
      
   {
@@ -18,6 +19,10 @@ const routes: Routes = [
   {
     path: 'map',
     component: MapComponent
+  },
+    {
+    path: 'payment',
+    component: PaymentComponent
   },
   
 ];

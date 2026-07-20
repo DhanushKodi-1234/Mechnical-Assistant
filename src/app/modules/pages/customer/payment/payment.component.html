@@ -1,0 +1,70 @@
+<!-- <div class="min-vh-100 bg-light d-flex align-items-center justify-content-center p-4">
+    <div class="card border-0 shadow-sm rounded-4 p-5 text-center" style="max-width: 500px; width: 100%;">
+        <div class="mb-4">
+            <div class="bg-success bg-opacity-10 text-success rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 80px; height: 80px;">
+                <i class="fas fa-check-circle" style="font-size: 40px;"></i>
+            </div>
+        </div>
+        <h2 class="fw-bold text-dark mb-3">Booking Confirmed!</h2>
+        <p class="text-muted mb-4 text-center">
+            Your mechanic request has been successfully placed. The mechanic will be on their way shortly.
+        </p>
+        <div class="d-grid gap-3">
+            <button routerLink="/app/customer" class="btn btn-primary py-3 rounded-3 fw-bold">
+                Back to Dashboard
+            </button>
+        </div>
+    </div>
+</div> -->
+
+<div class="container mt-5">
+
+    <div class="card shadow-lg border-0 rounded-4">
+
+        <div class="card-body text-center p-5">
+
+            <i class="fas fa-check-circle text-success display-1"></i>
+
+            <h2 class="mt-4">
+                Booking Successful
+            </h2>
+
+            <hr>
+
+            <h5>
+
+                Payment Method :
+
+                <span class="text-primary">
+
+                    {{paymentMethod}}
+
+                </span>
+
+            </h5>
+
+            <h5>
+
+                Amount :
+
+                <span class="text-success">
+
+                    ₹{{amount}}
+
+                </span>
+
+            </h5>
+
+            <a
+                routerLink="/app/customer"
+                class="btn btn-success mt-4">
+
+                Back To Home
+
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
