@@ -1,4 +1,7 @@
 export const adminLogin = (req, res) => {
+   console.log("Email from env:", process.env.adminemail);
+  console.log("Password from env:", process.env.adminpassword);
+
   const { email, password } = req.body;
   if (
     email === process.env.adminemail &&
