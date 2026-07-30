@@ -37,7 +37,8 @@ export class CustomerlocComponent implements OnInit {
       alert('Please fill all fields correctly');
       return;
     }
-    this.router.navigate(['http://localhost:4200/app/customer/cus']);
+    
+    this.router.navigate(['https://appsail-50044427482.development.catalystappsail.in/app/customer/cus']);
 
     
   }

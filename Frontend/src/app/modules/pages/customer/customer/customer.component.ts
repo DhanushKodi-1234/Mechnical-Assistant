@@ -52,10 +52,10 @@ imagePreview: string | null = null;
       problemType: new FormControl('', Validators.required)
     });
   }
-
+// const url = 'https://appsail-50044427482.development.catalystappsail.in/api/users/login';
   fetchTableData(row: any) {
     this.loading = true;
-    this.http.get<any>('http://localhost:3000/api/users/mechanics/sucess').subscribe({
+    this.http.get<any>('https://appsail-50044427482.development.catalystappsail.in/api/users/mechanics/sucess').subscribe({
       next: (res) => {
         this.dataArray = res.data;
         this.loading = false;

@@ -77,6 +77,7 @@ getCurrentLocation() {
 
     this.http.post(
       'http://localhost:3000/api/users/mechanic/signup',
+      'https://appsail-50044427482.development.catalystappsail.in/api/users/mechanic/signup',
       this.RegisterForm.value
     ).subscribe({
       next: (res) => {

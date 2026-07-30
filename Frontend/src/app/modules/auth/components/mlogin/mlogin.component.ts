@@ -51,7 +51,8 @@ export class MloginComponent {
 
 
         //without auth service
-     const url= 'http://localhost:3000/api/users/mechanic/login'
+    //  const url= 'http://localhost:3000/api/users/mechanic/login'
+     const url = 'https://appsail-50044427482.development.catalystappsail.in/api/users/mechanic/login';
     this.http.post(url, this.loginform.value).subscribe({
   next: (res: any) => {
     if (res.status && res.data) {

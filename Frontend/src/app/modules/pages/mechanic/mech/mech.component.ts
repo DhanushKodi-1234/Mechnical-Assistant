@@ -33,7 +33,7 @@ export class MechComponent implements OnInit {
       callback: (row: any) => this.view(row)
     },
   ];
-  private apiUrl = 'http://localhost:3000/api/users/requests';
+  private apiUrl = 'https://appsail-50044427482.development.catalystappsail.in/api/users/requests';
   constructor(private http: HttpClient,   private sanitizer: DomSanitizer, private router:Router, private auth:AuthService) {}
   ngOnInit() {
     this.fetchTableData({});
