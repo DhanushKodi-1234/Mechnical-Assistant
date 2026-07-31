@@ -76,37 +76,35 @@ export class AdminloginComponent implements OnInit {
 //     });
 //   }
 onsubmit() {
-    if (this.loginform.invalid) {
-      window.alert('Please fill out all required fields.');
-      return;
-    }
-
-    this.Uploading = true;
-    // const url = 'http://localhost:3000/api/users/admin/login';
-    
-    // const url = 'https://appsail-50044427482.development.catalystappsail.in/api/users/admin/login';
-  const url = 'https://appsail-50044427482.development.catalystappsail.in/api/users/login';
-    this.http.post(url, this.loginform.value).subscribe({
-      next: (res: any) => {
-        this.Uploading = false;
-        
-        // I assume your backend returns 'res.success' based on your active code.
-        if (res.success) { 
-          
-          // 1. MUST SAVE THE TOKEN AND ROLE HERE BEFORE NAVIGATING
-          // Adjust 'res.token' to match whatever your backend actually sends back
-          localStorage.setItem('user_token', res.token || 'true'); 
-          localStorage.setItem('role', 'admin');
-          
-          window.alert('Login Success!');
-          this.ngZone.run(() => this.router.navigate(['/app/admin']));
-        }
-      },
-      error: err => {
-        this.Uploading = false; 
-        console.log('Login validation failed', err);
-        window.alert(err.error?.message || 'Login failed. Please check your credentials.');
-      }
-    });
+  if (this.loginform.invalid) {
+    window.alert('Please fill out all required fields.');
+    return;
   }
+
+  this.Uploading = true;
+
+  const url = 'https://mech-backend-vw4n.onrender.com/api/users/admin/login';
+
+  this.http.post(url, this.loginform.value).subscribe({
+    next: (res: any) => {
+      this.Uploading = false;
+
+      if (res.success) {
+        localStorage.setItem('user_token', 'true');
+        localStorage.setItem('role', 'admin');
+
+        window.alert('Login Success!');
+        this.ngZone.run(() => {
+          this.router.navigate(['/app/admin']);
+        });
+      } else {
+        window.alert(res.message || 'Login failed');
+      }
+    },
+    error: (err) => {
+      this.Uploading = false;
+      console.error(err);
+      window.alert(err.error?.message || 'Login failed. Please check your credentials.');
+    }
+  });
 }
