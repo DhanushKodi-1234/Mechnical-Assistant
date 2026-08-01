@@ -38,7 +38,7 @@ export class CustomerlocComponent implements OnInit {
       return;
     }
     
-    this.router.navigate(['https://appsail-50044427482.development.catalystappsail.in/app/customer/cus']);
+    this.router.navigate(['https://mech-backend-vw4n.onrender.com/app/customer/cus']);
 
     
   }

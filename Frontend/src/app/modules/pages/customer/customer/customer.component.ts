@@ -55,7 +55,7 @@ imagePreview: string | null = null;
 // const url = 'https://appsail-50044427482.development.catalystappsail.in/api/users/login';
   fetchTableData(row: any) {
     this.loading = true;
-    this.http.get<any>('https://appsail-50044427482.development.catalystappsail.in/api/users/mechanics/sucess').subscribe({
+    this.http.get<any>('https://mech-backend-vw4n.onrender.com/api/users/mechanics/sucess').subscribe({
       next: (res) => {
         this.dataArray = res.data;
         this.loading = false;
@@ -203,7 +203,7 @@ toRad(value: number): number {
     }
 
     this.loading = true;
-    this.http.post('http://localhost:3000/api/users/requests/raise', formData).subscribe({
+    this.http.post('https://mech-backend-vw4n.onrender.com/api/users/requests/raise', formData).subscribe({
       next: (res) => {
         alert(`Booking successfully requested! Cost calculated: ₹${this.calculatedAmount}`);
         this.resetFormState(); // <-- Cleaned up into a reusable helper method
@@ -234,7 +234,7 @@ toRad(value: number): number {
   }
 paynow() {
   this.http.post<any>(
-    'http://localhost:3000/api/payment/payment',
+    'https://mech-backend-vw4n.onrender.com/api/payment/payment',
     {
       amount: this.calculatedAmount
     }

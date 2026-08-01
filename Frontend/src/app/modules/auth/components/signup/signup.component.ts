@@ -28,7 +28,7 @@ ngOnInit(){
       return;
     }
 //  const url= 'http://localhost:3000/api/users/signupadmin'
-const url = 'https://appsail-50044427482.development.catalystappsail.in/api/users/signupadmin';
+const url = 'https://mech-backend-vw4n.onrender.com/api/users/signupadmin';
      this.http.post(url, this.RegisterForm.value).subscribe({
       next:(data)=>{
         console.log('sUCESS',data);

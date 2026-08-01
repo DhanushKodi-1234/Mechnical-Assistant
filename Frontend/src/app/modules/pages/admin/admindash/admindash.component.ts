@@ -22,7 +22,7 @@ export class AdmindashComponent implements OnInit {
   dataArray: any[] = [];
   loading: boolean = false;
   // private apiUrl = 'http://localhost:3000/api/users/mechanics';
-  private apiUrl = 'https://appsail-50044427482.development.catalystappsail.in/api/users/mechanics';
+  private apiUrl = 'https://mech-backend-vw4n.onrender.com/api/users/mechanics';
 
   actions = [
     {

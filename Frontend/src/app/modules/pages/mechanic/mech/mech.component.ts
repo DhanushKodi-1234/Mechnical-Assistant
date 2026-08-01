@@ -33,7 +33,7 @@ export class MechComponent implements OnInit {
       callback: (row: any) => this.view(row)
     },
   ];
-  private apiUrl = 'https://appsail-50044427482.development.catalystappsail.in/api/users/requests';
+  private apiUrl = 'https://mech-backend-vw4n.onrender.com/api/users/requests';
   constructor(private http: HttpClient,   private sanitizer: DomSanitizer, private router:Router, private auth:AuthService) {}
   ngOnInit() {
     this.fetchTableData({});
@@ -59,12 +59,12 @@ export class MechComponent implements OnInit {
   }
   fetchTableData(row: any) {
   this.loading = true;
-  this.http.get<any>('http://localhost:3000/api/users/requests').subscribe({
+  this.http.get<any>('https://mech-backend-vw4n.onrender.com/api/users/requests').subscribe({
     next: (res) => {
       this.dataArray = res.data.map((request: any) => {
         if (request.image) {
           const cleanPath = request.image.replace(/\\/g, '/');
-          request.imageUrl = `http://localhost:3000/${cleanPath}`;
+          request.imageUrl = `https://mech-backend-vw4n.onrender.com/${cleanPath}`;
         } else {
           request.imageUrl = null;
         }
