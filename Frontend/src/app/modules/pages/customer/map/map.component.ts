@@ -1,6 +1,7 @@
 import { AfterViewInit, Component } from '@angular/core';
 import * as L from 'leaflet';
 import 'leaflet-routing-machine';
+import 'leaflet-routing-machine/dist/leaflet-routing-machine.js';
 @Component({
   selector: 'app-map',
   standalone: false,
