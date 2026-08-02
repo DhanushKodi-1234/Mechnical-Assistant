@@ -66,33 +66,59 @@ getCurrentLocation() {
   }
 
 }
+  // onSubmit() {
+
+  //   if (this.RegisterForm.invalid) {
+  //     alert('Please fill all fields');
+  //     return;
+  //   }
+
+  //   console.log('Sending Data:', this.RegisterForm.value);
+
+  //   this.http.post(
+  //     'http://localhost:3000/api/users/mechanic/signup',
+  //     'https://mech-backend-vw4n.onrender.com/api/users/mechanic/signup',
+  //     this.RegisterForm.value
+  //   ).subscribe({
+  //     next: (res) => {
+  //       console.log(res);
+  //       alert('Registration Successful');
+
+  //       this.RegisterForm.reset();
+
+  //       this.router.navigate(['/auth/mclogin']);
+  //     },
+  //     error: (err) => {
+  //       console.log(err);
+  //       alert('Registration Failed');
+  //     }
+  //   });
+  // }
+
   onSubmit() {
 
-    if (this.RegisterForm.invalid) {
-      alert('Please fill all fields');
-      return;
-    }
-
-    console.log('Sending Data:', this.RegisterForm.value);
-
-    this.http.post(
-      'http://localhost:3000/api/users/mechanic/signup',
-      'https://mech-backend-vw4n.onrender.com/api/users/mechanic/signup',
-      this.RegisterForm.value
-    ).subscribe({
-      next: (res) => {
-        console.log(res);
-        alert('Registration Successful');
-
-        this.RegisterForm.reset();
-
-        this.router.navigate(['/auth/mclogin']);
-      },
-      error: (err) => {
-        console.log(err);
-        alert('Registration Failed');
-      }
-    });
+  if (this.RegisterForm.invalid) {
+    alert('Please fill all fields');
+    return;
   }
+
+  console.log(this.RegisterForm.value);
+
+  this.http.post(
+    'https://mech-backend-vw4n.onrender.com/api/users/mechanic/signup',
+    this.RegisterForm.value
+  ).subscribe({
+    next: (res: any) => {
+      console.log(res);
+      alert('Registration Successful');
+      this.RegisterForm.reset();
+      this.router.navigate(['/auth/mclogin']);
+    },
+    error: (err) => {
+      console.log(err);
+      alert(err.error?.message || 'Registration Failed');
+    }
+  });
+}
 }
 
